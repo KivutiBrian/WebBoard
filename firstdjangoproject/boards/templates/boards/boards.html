@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Bo{% endblock %}
+
+{% block nav %}Boards{% endblock %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+      <tr class="bg-dark text-white">
+        <th scope="col">Board Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Posts</th>
+        <th scope="col">Topic</th>
+        <th scope="col">Last Post</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for board in boards %}
+      <tr>
+        <th scope="row">{{ board.id }}</th>
+        <td>
+          <a href="{% url 'boards_topic' board.id %}">{{ board.name }}</a>
+          <br>
+            <small class="text-muted d-block">{{ board.description }}</small>
+        </td>
+        <td class="align-middle">0</td>
+        <td class="align-middle">0</td>
+        <td class="align-middle">0</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
