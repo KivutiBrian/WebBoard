@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Board(models.Model):
     name = models.CharField(max_length=30, unique=True)
     description = models.TextField()
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
         return self.name
@@ -14,6 +15,10 @@ class Topic(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(Board, related_name='topics', on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name='topics', on_delete=models.CASCADE)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.name
 
 class Post(models.Model):
     message = models.TextField(max_length=4000)
@@ -22,3 +27,6 @@ class Post(models.Model):
     updated_at = models.DateTimeField(null=True)
     created_by = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     updated_by = models.ForeignKey(User, null=True, related_name='+', on_delete=models.CASCADE) 
+
+    def __str__(self) -> str:
+        return self.name

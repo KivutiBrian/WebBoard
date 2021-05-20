@@ -14,3 +14,11 @@ def index(request):
     }
 
     return render(request, 'boards/boards.html', context=context)
+
+def boards_topic(request, board_id):
+
+    context = {
+        'board_id': board_id
+    }
+
+    return render(request, 'boards/boards_topic.html', context=context)

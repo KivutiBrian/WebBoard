@@ -20,7 +20,9 @@
     {% for board in boards %}
       <tr>
         <th scope="row">{{ board.id }}</th>
-        <td>{{ board.name }} <br>
+        <td>
+          <a href="{% url 'boards_topic' board.id %}">{{ board.name }}</a>
+          <br>
             <small class="text-muted d-block">{{ board.description }}</small>
         </td>
         <td class="align-middle">0</td>
